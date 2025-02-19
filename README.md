@@ -1,7 +1,7 @@
 # sunrise_sunset
 Rough tests on sunrise-sunset calculation methods
 
-## Raison d'etre
+## Raison d'être
 
 Every now and then someone comes up with the idea that sunrise time follows a sine curve. Well, it depends on what kind of error you are willing to tolerate. But it's not a good approximation, and geometrically baseless.
 
