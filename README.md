@@ -25,6 +25,8 @@ sunrise_sin error ranges from -15:22 to 26:32 (min:sec). sunrise_short error ran
 
 There is a physical limitation on defining the exact time of sunrise and sunset. It is defined by the upper limb of the sun being visible, which means we have to take into account atmospheric refraction. The actual amount of refraction depends on weather conditions, so seconds in sunrise and sunset times are pretty much meaningless.
 
-## Note on time scales
+The analysis is done on the location of Helsinki, latitude 60.1708 degrees North. There is reason to believe errors of any realistic method get worse the closer to the poles you get. Note that I didn't bother handling the case where sun does not set (or rise) at all, which occasionally happens if you are north of about 66.6 N or south of 66.6 S.
+
+## A ote on time scales
 
 All calculations are in TBD, Barycentric Dynamical Time, which is historical and superseded but pretty much the same as TT, Terrestiol Time. TT is not TAI, and TAI is not UTC. If you want to use this code to actually publish sunrise and sunset times, you probably need to convert to UTC, which means dealing with leap seconds, so I left it out.
