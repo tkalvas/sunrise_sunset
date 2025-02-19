@@ -177,7 +177,6 @@ def equation_of_time_days(lp, ma, tl):
 
 def spherical_daylight(x):
     latP = parameters.latitude_rad_prime
-    depth = 1.5853407372281827
     season = pi/2 + parameters.obliquity_of_the_ecliptic_rad * sin(x)
     cosP = (cos(parameters.sunrise_depth_rad) - cos(latP) * cos(season)) / (sin(latP) * sin(season))
     return acos(cosP) / pi
@@ -191,7 +190,7 @@ def sunchange(jd, is_set):
         eot = equation_of_time_days(p.lp, p.ma, p.tl)
         half_daylength = spherical_daylight(p.tl) / 2
         longitude_days = 24.9375 / 360
-        jd = raw_midday - longitude_days - eot + dt
+        jd = raw_midday - parameters.longitude_days - eot + dt
         if is_set:
             jd += half_daylength
         else:
