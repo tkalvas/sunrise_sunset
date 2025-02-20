@@ -177,7 +177,7 @@ def equation_of_time_days(lp, ma, tl):
 
 def spherical_daylight(x):
     latP = parameters.latitude_rad_prime
-    season = pi/2 + parameters.obliquity_of_the_ecliptic_rad * sin(x)
+    season = pi/2 + asin(sin(parameters.obliquity_of_the_ecliptic_rad) * sin(x))
     cosP = (cos(parameters.sunrise_depth_rad) - cos(latP) * cos(season)) / (sin(latP) * sin(season))
     return acos(cosP) / pi
 
