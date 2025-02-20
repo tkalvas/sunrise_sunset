@@ -175,10 +175,10 @@ def equation_of_time_days(lp, ma, tl):
 # sin l' sin s cos P = cos d - cos l' cos s
 # cos P = (cos d - cos l' cos s) / (sin l' sin s)
 
-def spherical_daylight(x):
+def spherical_daylight(ecliptic_longitude):
     latP = parameters.latitude_rad_prime
-    season = pi/2 + asin(sin(parameters.obliquity_of_the_ecliptic_rad) * sin(x))
-    cosP = (cos(parameters.sunrise_depth_rad) - cos(latP) * cos(season)) / (sin(latP) * sin(season))
+    declination = asin(sin(parameters.obliquity_of_the_ecliptic_rad) * sin(ecliptic_longitude))
+    cosP = (cos(parameters.sunrise_depth_rad) + cos(latP) * sin(declination)) / (sin(latP) * cos(declination))
     return acos(cosP) / pi
 
 def sunchange(jd, is_set):
