@@ -21,7 +21,7 @@ A method of calculating the sunrise and sunset times based on a short literature
 
 ## Accuracy of the results
 
-sunrise_sin error ranges from -15:22 to 26:32 (min:sec). sunrise_short error ranges from -2:16 to 2:08 (min:sec).
+sunrise_sin error ranges from -15:22 to 26:32 (minutes:seconds). sunrise_short error ranges from -7.8 to 5.8 seconds.
 
 There is a physical limitation on defining the exact time of sunrise and sunset. It is defined by the upper limb of the sun being visible, which means we have to take into account atmospheric refraction. The actual amount of refraction depends on weather conditions, so seconds in sunrise and sunset times are pretty much meaningless.
 
