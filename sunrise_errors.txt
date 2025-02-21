@@ -1,0 +1,78 @@
+.                  error limits difference -\
+.                higher error limit -\
+.         lower error limit -\
+
+With all logic on, compare every day from 1950 to 2025, and note the
+greatest extent of the error to either side separately. Use Helsinki
+as the location:
+
+baseline                    -7.831s 5.765s =13.60s
+
+-----
+
+Compare errors by changing only one parameter from baseline:
+
+sunrise_angle_rounds=2      -7.829s 5.840s =13.67s
+sunrise_angle_rounds=1      -71.6s  63.5s  =135.1s
+
+sun_radius=False             4:29   7:59   =3:30
+horizon_diffraction=False    2:05   3:51   =1:46
+both                         6:38   11:35   =4:57
+
+delta_t=False               -75.2s -24.0s  =51.2s
+
+orbital_elements=False      -14.56s 14.79s =29.35s
+orbital_eccentricity=False  -2:44   12:26  =15:10
+both                        -2:44   12:26  =15:10
+
+equation_of_time=SOME       -60.8s  43.8s  =104.6s
+equation_of_time=NONE       -14:24  16:31  =30:55
+
+nonlinear_declination=False -2:16   2:08   =4:24
+
+accurate_true_anomaly=False -10.51s 11.81s =22.32
+
+-----
+
+Compare errors by changing parameters cumulatively, in the order of
+least error inducing first, based on previous section's results:
+
+baseline                    -7.831s 5.765s =13.60s
+sunrise_angle_rounds=2      -7.829s 5.840s =13.67s
+accurate_true_anomaly=False -10.41s 11.86s =22.27s
+orbital_elements=False      -13.87s 14.69s =28.56s
+equation_of_time=SOME       -60.4s  45.1s  =105.5s
+sunrise_angle_rounds=1      -69.8s  71.3s  =141.1s
+delta_t=False               -2:17   0:41   =2:58
+nonlinear_declination=False -4:27   2:22   =6:49
+orbital_eccentricity=False  -1:23   6:33   =7:56
+horizon_diffraction=False    2:01   9:00   =6:59
+sun_radius=False             8:06   14:29  =6:23
+equation_of_time=NONE       -3:07   30:51  =33:58
+
+-----
+
+Compare errors by changing parameters cumulatively, but skipping
+sunrise_angle_rounds=1, delta_t=False, and nonlinear_declination=False,
+because they are really bad math:
+
+baseline..equation_of_time=SOME
+orbital_eccentricity=False  -0:30   5:54   =6:24
+horizon_diffraction=False    2:58   8:03   =5:05
+sun_radius=False             9:50   12:38  =2:48
+
+-----
+
+It appears that horizon_diffraction=False and sun_radius=False compensate
+the error induced by orbital_eccentricity=False, so compare errors in
+a location somewhere in the southern hemisphare. Use Punta Arenas,
+the southernmost big city:
+
+baseline                    -5.984s 5.198s =11.182s
+sunrise_angle_rounds=2      -5.984s 5.206s =11.190s
+accurate_true_anomaly=False -9.545s 9.404s =18.949s
+orbital_elements=False      -15.52s 12.48s =28.00s
+equation_of_time=SOME       -61.8s  51.6s  =113.4s
+orbital_eccentricity=False  -5:05   0:32   =5:37
+horizon_diffraction=False   -3:18   2:58   =6:16
+sun_radius=False             0:30   8:04   =7:34
